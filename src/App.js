@@ -47,7 +47,7 @@ handleInput = (event) => {
                         key={index}
                         name={car.name}
                         year={car.year}
-                        onChangeTitle={() => this.changeTitleHandler(car.name)}
+                        onChangeTitle={() => this.changeTitleHandler(car.name)}  
                     />
                 )
 
