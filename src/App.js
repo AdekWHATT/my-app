@@ -37,8 +37,8 @@ handleInput = (event) => {
               <input type="text" onChange={this.handleInput}/>
 
                 <button
-                    onClick={this.changeTitleHandler.bind(this, "Chanched!")}>
-                  Change Title
+                    onClick={this.changeTitleHandler.bind(this, "Изменено!")}>
+                  Кнопка изменения заголовка
                 </button>
 
               {this.state.cars.map((car,index) => {
