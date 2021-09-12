@@ -33,30 +33,35 @@ class App extends Component {
         const divStyle = {
             textAlign: 'center'
         }
+// 1 Создаем переменную cars, по умолчанию будет null
+let cars = null
+//  2 Спрашиваем если текущее состояние this.state.showCars истина, то 
+if (this.state.showCars) {
+    // 3 определяем переменную cars на вывод
+cars = this.state.cars.map((car, index) =>  {
+    // 4 возращаем нам список эелементов
+    return (
+        <Car
+            key={index}
+            name={car.name}
+            year={car.year}
+            onChangeTitle={() => this.changeTitleHandler(car.name)}
+        /> )
+    } )
+}
+
         return (
             <div style={divStyle}>
 
                 <h1>{this.state.pageTitle}</h1>
                
-{/* Кнопка будет менять состояние showCars с false  на true */}
+
                      <button
                     onClick={this.toggleCarsHandler}>
                     Toggle Cars
                     </button>
-                    {/* Если this.state.showCars (true ?) то отрисовываем список */}
-                 { this.state.showCars 
-                 ? this.state.cars.map((car, index) =>  {
-                    return (
-                        <Car
-                            key={index}
-                            name={car.name}
-                            year={car.year}
-                            onChangeTitle={() => this.changeTitleHandler(car.name)}
-                        /> )
-                    } )
-                    // Иначе возвращаем : null
-                    : null 
-                } 
+                    {/* 5 А в JSX выводим просто переменную cars */}
+                    { cars } 
                 </div>
         )
     }
