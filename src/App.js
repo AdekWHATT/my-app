@@ -71,8 +71,15 @@ cars = this.state.cars.map((car, index) =>  {
                     onClick={this.toggleCarsHandler}>
                     Toggle Cars
                     </button>
-                    {/* 5 А в JSX выводим просто переменную cars */}
-                    { cars } 
+                    <div style={{
+                        width: '400px',
+                        margin: 'auto',
+                        paddingTop: '20px'
+                    }
+
+                    }>
+                    { cars }
+                    </div> 
                 </div>
         )
     }
