@@ -10,21 +10,24 @@ class App extends Component {
             {name: 'Audi', year: 2016},
             {name: 'Mazda', year: 2010}
         ],
-        pageTitle: 'Это объект в state PageTitle'
+        pageTitle: 'Это объект в state PageTitle',
+        showCars: false
+
     }
-    changeTitleHandler = (newTitle) => {
+    // toggleCarsHandler метод кнопки Toggle Cars, ничего не получает в параметры
+    toggleCarsHandler = () => {
 
 
-      this.setState({
-        pageTitle: newTitle
-      })
+        this.setState({
+            //  и будет менять состояние параметра showCars  false на true
+            //  с помощью инверсии
+            showCars: !this.state.showCars
+        })
     }
-handleInput = (event) => {
-
-  this.setState({
-    pageTitle: event.target.value
-  })
-}
+   
+    changeTitleHandler = pageTitle => {
+        this.setState({pageTitle})
+    }
     render() {
 
         const divStyle = {
@@ -34,47 +37,30 @@ handleInput = (event) => {
             <div style={divStyle}>
 
                 <h1>{this.state.pageTitle}</h1>
-              <input type="text" onChange={this.handleInput}/>
-
-                <button
-                    onClick={this.changeTitleHandler.bind(this, "Изменено!")}>
-                  Кнопка изменения заголовка
-                </button>
-
-              {this.state.cars.map((car,index) => {
-                return (
-                    <Car
-                        key={index}
-                        name={car.name}
-                        year={car.year}
-                        onChangeTitle={() => this.changeTitleHandler(car.name)}  
-                    />
-                )
-
-              }) }
-            </div>
+               
+{/* Кнопка будет менять состояние showCars с false  на true */}
+                     <button
+                    onClick={this.toggleCarsHandler}>
+                    Toggle Cars
+                    </button>
+                    {/* Если this.state.showCars (true ?) то отрисовываем список */}
+                 { this.state.showCars 
+                 ? this.state.cars.map((car, index) =>  {
+                    return (
+                        <Car
+                            key={index}
+                            name={car.name}
+                            year={car.year}
+                            onChangeTitle={() => this.changeTitleHandler(car.name)}
+                        /> )
+                    } )
+                    // Иначе возвращаем : null
+                    : null 
+                } 
+                </div>
         )
     }
 }
 
-
-//
-// function App() {
-// const state = {
-//   [
-//
-//       ]
-//
-//
-// }
-//   return (
-//     <div className="App">
-//     <h1>Hello World</h1>
-//       <Car name={'Ford'} year={2018}/>
-//       <Car name='Audi' year={2016}/>
-//       <Car name={'Mazda'} year={2010} />
-//     </div>
-//   );
-// }
 
 export default App;
