@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-      <App title={"Я ЕСТЬ ПРОПС"} />
+      <App title={"Заголовок"} />
   </React.StrictMode>,
   document.getElementById('root')
 );

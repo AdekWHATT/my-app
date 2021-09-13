@@ -4,10 +4,15 @@ import React from 'react'
 
 
 class Car extends React.Component {
-   
-    render() {
-      
-        const inputClasses = ['input']
+
+   render() {
+// if (Math.random() > 0.7 ) {
+//     throw new Error('Ошибка где-то ниже епа.....')
+// }
+
+
+
+      const inputClasses = ['input']
         if (this.props.name !== '') {
             inputClasses.push('green') 
         } else {

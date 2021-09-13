@@ -1,6 +1,7 @@
 import './App.css';
 import Car from './Car/Car'
 import {Component} from "react";
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 class App extends Component {
     constructor(props) {
@@ -53,15 +54,18 @@ let cars = null
 if (this.state.showCars) {
     // 3 определяем переменную cars на вывод
 cars = this.state.cars.map((car, index) =>  {
-    // 4 возращаем нам список эелементов
+    // 4 возращаем нам список элементов
     return (
+        <ErrorBoundary  key={index}>
         <Car
-            key={index}
+          
             name={car.name}
             year={car.year}
             onDelete={this.deleteHandler.bind(this, index)}
             onChangeName={(event) => this.onChangeName(event.target.value, index)}
-        /> )
+        /></ErrorBoundary> 
+        )
+        
     } )
 }
 
