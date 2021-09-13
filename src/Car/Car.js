@@ -1,34 +1,49 @@
 import './Car.css'
+import Radium from 'radium'
 
 
+const Car = (props) => { 
+    const inputClasses = ['input']
+    if (props.name !== '') {
+        inputClasses.push('green') 
+    } else {
+        inputClasses.push('red')
+    }
 
-export default props => { 
-        const inputClasses = ['input']
-        if (props.name !== '') {
-            inputClasses.push('green') 
-        } else {
-            inputClasses.push('red')
+    if (props.name.length > 4) {
+        inputClasses.push('bold')
+    }
+
+    const style = {
+        border: '1px solid #ccc',
+        boxShadow: '0 4px 5px 0 rgba(0, 0, 0, .14)',
+        ':hover': {
+            border: '1px solid #aaa',
+            boxShadow: '0 4px 15px 0 rgba(0,0,0, .25',
+            cursos: 'pointer'
         }
-
-        if (props.name.length > 4) {
-            inputClasses.push('bold')
-        }
+    }
 
 
-    return (
-    <div className="Car">
-        <h3>Car Name: {props.name}</h3>
-        <p>Year: <strong>{props.year}</strong></p>
-        
-        <input 
-        type="text " 
-        onChange={props.onChangeName} 
-        value={props.name}
-        className={inputClasses.join(' ')}
-        />
+return (
+<div className="Car" style={style} >
+    <h3>Car Name: {props.name}</h3>
+    <p>Year: <strong>{props.year}</strong></p>
+    
+    <input 
+    type="text " 
+    onChange={props.onChangeName} 
+    value={props.name}
+    className={inputClasses.join(' ')}
+    />
 
-        <button onClick={props.onDelete}>Удалить</button>
+    <button onClick={props.onDelete}>Удалить</button>
 
-    </div>
+</div>
 )
 }
+
+
+
+
+export default Radium(Car)
