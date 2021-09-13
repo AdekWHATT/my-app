@@ -3,17 +3,21 @@ import Car from './Car/Car'
 import {Component} from "react";
 
 class App extends Component {
-
-    state = {
-        cars: [
-            {name: 'Ford', year: 2018},
-            {name: 'Audi', year: 2016},
-            {name: 'Mazda', year: 2010}
-        ],
-        pageTitle: 'Это объект в state PageTitle',
-        showCars: false
-
-    }
+    constructor(props) {
+        super(props)
+        this.state = {
+            cars: [
+                {name: 'Ford', year: 2018},
+                {name: 'Audi', year: 2016},
+                {name: 'Mazda', year: 2010}
+            ],
+            pageTitle: 'Это объект в state PageTitle',
+            showCars: false
+    
+        }
+        }
+    
+       
     // toggleCarsHandler метод кнопки Toggle Cars, ничего не получает в параметры
     toggleCarsHandler = () => {
 
@@ -37,9 +41,9 @@ class App extends Component {
             cars.splice(index, 1)
             this.setState({cars})
         }
- 
-    render() { 
 
+    render() { 
+       
         const divStyle = {
             textAlign: 'center'
         }
@@ -64,7 +68,9 @@ cars = this.state.cars.map((car, index) =>  {
         return (
             <div style={divStyle}>
 
-                <h1>{this.state.pageTitle}</h1>
+                {/* <h1>{this.state.pageTitle}</h1> */}
+                <h1>{this.props.title}</h1>
+
                
 
                      <button
