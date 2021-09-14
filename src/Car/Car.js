@@ -1,38 +1,28 @@
-import './Car.css'
 import React from 'react'
-
+import classes from './Car.module.css'
+import withClass from '../hoc/withClass'
 
 class Car extends React.Component {
 
    render() {
- const inputClasses = ['input']
+ const inputClasses = [classes.input]
         if (this.props.name !== '') {
-            inputClasses.push('green') 
+            inputClasses.push(classes.green) 
         } else {
-            inputClasses.push('red')
+            inputClasses.push(classes.red)
         }
     
         if (this.props.name.length > 4) {
-            inputClasses.push('bold')
+            inputClasses.push(classes.bold)
         }
-    
-        const style = {
-            border: '1px solid #ccc',
-            boxShadow: '0 4px 5px 0 rgba(0, 0, 0, .14)',
-            ':hover': {
-                border: '1px solid #aaa',
-                boxShadow: '0 4px 15px 0 rgba(0,0,0, .25',
-                cursos: 'pointer'
-            }
-        }
-    
     return (
-    <div className="Car" style={style} >
+    <React.Fragment>
+    
         <h3>Car Name: {this.props.name}</h3>
         <p>Year: <strong>{this.props.year}</strong></p>
         
         <input 
-        type="text " 
+        type="text" 
         onChange={this.props.onChangeName} 
         value={this.props.name}
         className={inputClasses.join(' ')}
@@ -40,7 +30,7 @@ class Car extends React.Component {
     
         <button onClick={this.props.onDelete}>Удалить</button>
     
-    </div>
+        </React.Fragment>
     )
 
         
@@ -49,4 +39,4 @@ class Car extends React.Component {
 
 
 
-export default Car
+export default withClass(Car, classes.Car)
