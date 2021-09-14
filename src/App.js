@@ -2,6 +2,7 @@ import './App.css';
 import Car from './Car/Car'
 import {Component} from "react";
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+import Counter from './Counter/Counter';
 
 class App extends Component {
     constructor(props) {
@@ -9,8 +10,8 @@ class App extends Component {
         this.state = {
             cars: [
                 {name: 'Ford', year: 2018},
-                {name: 'Audi', year: 2016},
-                {name: 'Mazda', year: 2010}
+                // {name: 'Audi', year: 2016},
+                // {name: 'Mazda', year: 2010}
             ],
             pageTitle: 'Это объект в state PageTitle',
             showCars: false
@@ -71,13 +72,17 @@ cars = this.state.cars.map((car, index) =>  {
 
         return (
             <div style={divStyle}>
-
+                   
                 {/* <h1>{this.state.pageTitle}</h1> */}
                 <h1>{this.props.title}</h1>
 
-               
+                <Counter/>
+                <hr/>
 
-                     <button
+                     <button 
+                     style={{
+                         marginTop: '20px'
+                     }}
                     onClick={this.toggleCarsHandler}>
                     Toggle Cars
                     </button>
