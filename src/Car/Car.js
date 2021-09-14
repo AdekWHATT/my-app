@@ -1,5 +1,4 @@
 import './Car.css'
-import Radium from 'radium'
 import React from 'react'
 
 
@@ -50,4 +49,4 @@ class Car extends React.Component {
 
 
 
-export default Radium(Car)
+export default Car
