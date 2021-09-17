@@ -10,8 +10,8 @@ class App extends Component {
         this.state = {
             cars: [
                 {name: 'Ford', year: 2018},
-                // {name: 'Audi', year: 2016},
-                // {name: 'Mazda', year: 2010}
+                {name: 'Audi', year: 2016},
+                {name: 'Mazda', year: 2010}
             ],
             pageTitle: 'Это объект в state PageTitle',
             showCars: false
@@ -20,13 +20,12 @@ class App extends Component {
         }
     
        
-    // toggleCarsHandler метод кнопки Toggle Cars, ничего не получает в параметры
+  
     toggleCarsHandler = () => {
 
 
         this.setState({
-            //  и будет менять состояние параметра showCars  false на true
-            //  с помощью инверсии
+          
             showCars: !this.state.showCars
         })
     }
@@ -49,18 +48,17 @@ class App extends Component {
         const divStyle = {
             textAlign: 'center'
         }
-// 1 Создаем переменную cars, по умолчанию будет null
+
 let cars = null
-//  2 Спрашиваем если текущее состояние this.state.showCars истина, то 
+
 if (this.state.showCars) {
-    // 3 определяем переменную cars на вывод
+   
 cars = this.state.cars.map((car, index) =>  {
-    // 4 возращаем нам список элементов
+   
     return (
         <ErrorBoundary  key={index}>
         <Car
-          
-            name={car.name}
+          name={car.name}
             year={car.year}
             onDelete={this.deleteHandler.bind(this, index)}
             onChangeName={(event) => this.onChangeName(event.target.value, index)}
